@@ -953,7 +953,7 @@ var BaseCarousel = class extends HTMLElement {
       this.addEventListener("control:select", (event) => this.select(event.detail.index), { signal: this._abortController.signal });
     }
     if (this.selectedIndex === 0) {
-      this.selectedSlide.classList.add("is-selected");
+      this.selectedSlide?.classList.add("is-selected");
       this._dispatchEvent("carousel:select", 0);
     } else {
       this.select(this.selectedIndex, { animate: false, force: true });
@@ -1308,7 +1308,7 @@ var CartDiscountField = class extends AbstractCartDiscount {
     super();
     __privateAdd(this, _CartDiscountField_instances);
     __privateAdd(this, _hiddenDiscountInputOriginalValue);
-    __privateSet(this, _hiddenDiscountInputOriginalValue, __privateGet(this, _CartDiscountField_instances, hiddenDiscountInput_get).value);
+    __privateSet(this, _hiddenDiscountInputOriginalValue, __privateGet(this, _CartDiscountField_instances, hiddenDiscountInput_get)?.value);
     this.addEventListener("change", this.toggleDiscount.bind(this));
     this.addEventListener("input", __privateMethod(this, _CartDiscountField_instances, updateHiddenInput_fn));
   }
@@ -1319,7 +1319,9 @@ hiddenDiscountInput_get = function() {
   return this.querySelector('[name="discount"]');
 };
 updateHiddenInput_fn = function(event) {
-  __privateGet(this, _CartDiscountField_instances, hiddenDiscountInput_get).value = [__privateGet(this, _hiddenDiscountInputOriginalValue), event.target.value].filter((val) => val && val.trim() !== "").join(",");
+  const _hiddenInput = __privateGet(this, _CartDiscountField_instances, hiddenDiscountInput_get);
+  if (!_hiddenInput) return;
+  _hiddenInput.value = [__privateGet(this, _hiddenDiscountInputOriginalValue), event.target.value].filter((val) => val && val.trim() !== "").join(",");
 };
 var CartDiscountRemoveButton = class extends AbstractCartDiscount {
   constructor() {
@@ -1809,17 +1811,22 @@ var CartDrawer = class extends Drawer {
     if (event.detail.cart["item_count"] > 0) {
       const currentInner = this.querySelector(".cart-drawer__inner"), updatedInner = updatedDrawerContent.querySelector(".cart-drawer__inner");
       if (!currentInner) {
-        this.replaceChildren(document.createRange().createContextualFragment(updatedDrawerContent.querySelector(".cart-drawer").innerHTML));
+        const _cartDrawerEl = updatedDrawerContent.querySelector(".cart-drawer");
+        if (!_cartDrawerEl) return;
+        this.replaceChildren(document.createRange().createContextualFragment(_cartDrawerEl.innerHTML));
       } else {
         setTimeout(() => {
-          currentInner.innerHTML = updatedInner.innerHTML;
+          if (updatedInner) currentInner.innerHTML = updatedInner.innerHTML;
         }, event.detail.baseEvent === "variant:add" ? 0 : 1250);
-        this.querySelector('[slot="footer"]').replaceChildren(...updatedDrawerContent.querySelector('[slot="footer"]').childNodes);
+        const _footerSlot = this.querySelector('[slot="footer"]'), _updatedFooterSlot = updatedDrawerContent.querySelector('[slot="footer"]');
+        if (_footerSlot && _updatedFooterSlot) _footerSlot.replaceChildren(..._updatedFooterSlot.childNodes);
       }
     } else {
       await animate4(this.children, { opacity: 0 }, { duration: 0.15 }).finished;
-      this.replaceChildren(...updatedDrawerContent.querySelector(".cart-drawer").childNodes);
-      animate4(this.querySelector(".empty-state"), { opacity: [0, 1], transform: ["translateY(20px)", "translateY(0)"] }, { duration: 0.15 });
+      const _cartDrawerEl = updatedDrawerContent.querySelector(".cart-drawer");
+      if (_cartDrawerEl) this.replaceChildren(..._cartDrawerEl.childNodes);
+      const _emptyState = this.querySelector(".empty-state");
+      if (_emptyState) animate4(_emptyState, { opacity: [0, 1], transform: ["translateY(20px)", "translateY(0)"] }, { duration: 0.15 });
     }
   }
   /**
@@ -1846,7 +1853,8 @@ var CartDrawer = class extends Drawer {
   async _onCartRefresh() {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = await (await fetch(`${window.Shopify.routes.root}?section_id=${extractSectionId(this)}`)).text();
-    this.replaceChildren(...tempDiv.querySelector("#cart-drawer").children);
+    const _refreshedCart = tempDiv.querySelector("#cart-drawer");
+    if (_refreshedCart) this.replaceChildren(..._refreshedCart.children);
   }
 };
 var CartNotificationDrawer = class extends Drawer {
@@ -1889,13 +1897,13 @@ var LineItem = class extends HTMLElement {
     this.addEventListener("line-item:change", this._onChanged.bind(this));
   }
   _onWillChange() {
-    this.pillLoaderElement.setAttribute("aria-busy", "true");
+    this.pillLoaderElement?.setAttribute("aria-busy", "true");
   }
   _onErrored() {
-    this.pillLoaderElement.removeAttribute("aria-busy");
+    this.pillLoaderElement?.removeAttribute("aria-busy");
   }
   async _onChanged(event) {
-    this.pillLoaderElement.removeAttribute("aria-busy");
+    this.pillLoaderElement?.removeAttribute("aria-busy");
     if (event.detail.cart["item_count"] === 0 || event.detail.quantity !== 0) {
       return;
     }
@@ -3714,7 +3722,7 @@ var AnimatedDetails = class extends HTMLDetailsElement {
     this.summaryElement = this.firstElementChild;
     this.contentElement = this.lastElementChild;
     this._open = this.hasAttribute("open");
-    this.summaryElement.addEventListener("click", this._onSummaryClicked.bind(this));
+    this.summaryElement?.addEventListener("click", this._onSummaryClicked.bind(this));
     if (Shopify.designMode) {
       this.addEventListener("shopify:block:select", () => this.open = true);
       this.addEventListener("shopify:block:deselect", () => this.open = false);
@@ -3793,7 +3801,9 @@ var Tabs = class extends HTMLElement {
     super();
     __privateAdd(this, _Tabs_instances);
     if (!this.shadowRoot) {
-      this.attachShadow({ mode: "open" }).appendChild(this.querySelector("template").content.cloneNode(true));
+      const _tabsTemplate = this.querySelector("template");
+      if (!_tabsTemplate) return;
+      this.attachShadow({ mode: "open" }).appendChild(_tabsTemplate.content.cloneNode(true));
     }
     if (Shopify.designMode) {
       this.addEventListener("shopify:block:select", (event) => this.selectedIndex = this.buttons.indexOf(event.target));
@@ -5004,8 +5014,11 @@ var ProductRecommendations = class extends HTMLElement {
       return;
     }
     this._isLoaded = true;
-    const section = this.closest(".shopify-section"), intent = this.getAttribute("intent") || "related", url = `${Shopify.routes.root}recommendations/products?product_id=${this.getAttribute("product")}&limit=${this.getAttribute("limit") || 4}&section_id=${section.id.replace("shopify-section-", "")}&intent=${intent}`, response = await fetch(url, { priority: "low" });
+    const section = this.closest(".shopify-section");
+    if (!section) return;
+    const intent = this.getAttribute("intent") || "related", url = `${Shopify.routes.root}recommendations/products?product_id=${this.getAttribute("product")}&limit=${this.getAttribute("limit") || 4}&section_id=${section.id.replace("shopify-section-", "")}&intent=${intent}`, response = await fetch(url, { priority: "low" });
     const tempDiv = new DOMParser().parseFromString(await response.text(), "text/html"), productRecommendationsElement = tempDiv.querySelector("product-recommendations");
+    if (!productRecommendationsElement) return;
     if (productRecommendationsElement.childElementCount > 0) {
       this.replaceChildren(...document.importNode(productRecommendationsElement, true).childNodes);
     } else {
@@ -5051,8 +5064,11 @@ loadProducts_fn = async function() {
     return;
   }
   __privateSet(this, _isLoaded, true);
-  const section = this.closest(".shopify-section"), url = `${Shopify.routes.root}search?type=product&q=${__privateGet(this, _RecentlyViewedProducts_instances, searchQueryString_get)}&section_id=${extractSectionId(section)}`, response = await fetch(url, { priority: "low" });
+  const section = this.closest(".shopify-section");
+  if (!section) return;
+  const url = `${Shopify.routes.root}search?type=product&q=${__privateGet(this, _RecentlyViewedProducts_instances, searchQueryString_get)}&section_id=${extractSectionId(section)}`, response = await fetch(url, { priority: "low" });
   const tempDiv = new DOMParser().parseFromString(await response.text(), "text/html"), recentlyViewedProductsElement = tempDiv.querySelector("recently-viewed-products");
+  if (!recentlyViewedProductsElement) return;
   if (recentlyViewedProductsElement.childElementCount > 0) {
     this.replaceChildren(...document.importNode(recentlyViewedProductsElement, true).childNodes);
   } else {
