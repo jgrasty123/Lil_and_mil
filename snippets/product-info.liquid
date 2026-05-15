@@ -259,6 +259,11 @@ Supported variables
             </div>
           {%- endif -%}
 
+        {%- when 'volume_discount' -%}
+          {%- if product.available -%}
+            {%- render 'volume-discount', block: block, product: product, product_form_id: product_form_id -%}
+          {%- endif -%}
+
         {%- when 'quantity_selector' -%}
           {%- if product.available -%}
             {%- assign variant = product.selected_or_first_available_variant -%}

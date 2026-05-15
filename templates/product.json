@@ -1,1 +1,204 @@
-{"sections":{"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{"heading_tag":"h2"}},"vendor":{"type":"vendor","disabled":true,"settings":{}},"price":{"type":"price","settings":{"show_taxes_notice":false}},"variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"swatch","variant_image_options":"","size_chart_page":""}},"badges":{"type":"badges","settings":{}},"payment_terms":{"type":"payment_terms","settings":{}},"06f56b92-c8a4-4117-8a0e-6f2c5e82e67e":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Trust-Basges-500-150_625334a1-6483-455c-a7f8-07953cfe18ef.png","alignment":"center","max_width":500}},"judge_me_reviews_preview_badge_W37UcM":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}},"quantity_selector":{"type":"quantity_selector","settings":{}},"5a6fa0e9-f4b0-4caf-a1fa-83a7ab582a60":{"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":true,"atc_button_background":"#007fff","atc_button_text_color":"#ffffff","payment_button_background":"#007fff","payment_button_text_color":"#ffffff"}},"collapsible_text_zxtRni":{"type":"collapsible_text","settings":{"icon":"none","icon_width":20,"title":"Features","content":"{{ product.metafields.custom.features | metafield_tag }}","page":""}},"collapsible_text_EwMmfx":{"type":"collapsible_text","settings":{"icon":"none","icon_width":20,"title":"Description","content":"{{ product.metafields.custom.discription | metafield_tag }}<p><\/p>","page":""}},"collapsible_text_xNNf4B":{"type":"collapsible_text","settings":{"icon":"none","icon_width":20,"title":"About Lil & Mil","content":"<p>Hey James here - We launched Lil and Mil to help parents on the go, becase we are parents on the go that wanted better products to help make our lives easier (and a bit better).  So we sought out to create them for our kids, and yours. <\/p><p>We seek to do that through innovative, but affordable products for babies and kids. I am a parent of two, Lillian and Maximilian, (hence the name), and was frustrated by the dearth of quality products that are also affordable.<\/p><p>Its either some Amazon junk or prohibitively expensive, we sought out to change that.<\/p><p>Our first line of products are aimed at  addressing unmet needs of using a stroller on the go, following that we will soon launch a line of travel-focused baby and kids products.<\/p><p>We hope to offer our customers honesty, transparency, and an open door for any questions, comments, or concerns about our products. We are here to help you become a better parent and maybe make parenting a bit easier in the process.<\/p><p>Looking to making my customers day soon!<\/p><p><br\/>Cheers!<br\/>James<br\/>Founder<br\/>Lil & Mil<\/p>","page":""}},"description":{"type":"description","disabled":true,"settings":{"icon":"none","icon_width":20,"collapse_content":true}},"judge_me_reviews_review_widget_KMAhYq":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"sample_data","max_width":1200}},"separator":{"type":"separator","settings":{}},"66af2bc0-545e-43fe-b603-e60f3db6bf2f":{"type":"liquid","settings":{"liquid":""}}},"block_order":["title","vendor","price","variant_picker","badges","payment_terms","06f56b92-c8a4-4117-8a0e-6f2c5e82e67e","judge_me_reviews_preview_badge_W37UcM","quantity_selector","5a6fa0e9-f4b0-4caf-a1fa-83a7ab582a60","collapsible_text_zxtRni","collapsible_text_EwMmfx","collapsible_text_xNNf4B","description","judge_me_reviews_review_widget_KMAhYq","separator","66af2bc0-545e-43fe-b603-e60f3db6bf2f"],"settings":{"full_width":true,"show_fixed_add_to_cart":true,"desktop_media_width":65,"desktop_media_layout":"grid_highlight","mobile_media_size":"expanded","mobile_carousel_control":"dots","enable_video_autoplay":true,"enable_video_looping":true,"enable_image_zoom":true,"max_image_zoom_level":4,"background":"","background_gradient":"","text_color":"","input_background":"rgba(0,0,0,0)","input_text_color":""}},"related-products":{"type":"related-products","settings":{"recommendations_count":6,"products":[],"full_width":true,"stack_products":true,"show_progress_bar":false,"products_per_row_mobile":"1","products_per_row_desktop":3,"subheading":"","title":"You may also like","content":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}}},"order":["main","related-products"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "06f56b92-c8a4-4117-8a0e-6f2c5e82e67e": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Trust-Basges-500-150_625334a1-6483-455c-a7f8-07953cfe18ef.png",
+            "alignment": "center",
+            "max_width": 500
+          }
+        },
+        "judge_me_reviews_preview_badge_W37UcM": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "5a6fa0e9-f4b0-4caf-a1fa-83a7ab582a60": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#007fff",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "#007fff",
+            "payment_button_text_color": "#ffffff"
+          }
+        },
+        "collapsible_text_zxtRni": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Features",
+            "content": "{{ product.metafields.custom.features | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_EwMmfx": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Description",
+            "content": "{{ product.metafields.custom.discription | metafield_tag }}<p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_xNNf4B": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "About Lil & Mil",
+            "content": "<p>Hey James here\u00a0- We launched\u00a0Lil and Mil to help parents on the go, becase we are parents on the go that wanted better products to help make our lives easier (and a bit better).\u00a0 So we sought out to create them for our kids, and yours.\u00a0</p><p>We seek to do that through innovative, but affordable products for babies and kids. I am a parent of two, Lillian and Maximilian, (hence the name), and was frustrated by the dearth of quality products that are also affordable.</p><p>Its either some Amazon junk or prohibitively expensive, we sought out to change that.</p><p>Our first line of products\u00a0are aimed at\u00a0 addressing unmet needs of using a stroller\u00a0on the go,\u00a0following that we will soon launch a line of travel-focused baby and kids products.</p><p>We hope to offer our customers honesty, transparency, and an open door for any questions, comments, or concerns about our products. We are here to help you become a better parent and maybe make parenting a bit easier in the process.</p><p>Looking to making my customers day soon!</p><p><br/>Cheers!<br/>James<br/>Founder<br/>Lil & Mil</p>",
+            "page": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": true
+          }
+        },
+        "judge_me_reviews_review_widget_KMAhYq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "66af2bc0-545e-43fe-b603-e60f3db6bf2f": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        },
+        "volume_discount": {
+          "type": "volume_discount",
+          "settings": {
+            "heading": "Buy More, Save More",
+            "tier1_qty": 2,
+            "tier1_pct": 15,
+            "tier2_qty": 3,
+            "tier2_pct": 20,
+            "tier3_qty": 4,
+            "tier3_pct": 25
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "price",
+        "variant_picker",
+        "badges",
+        "payment_terms",
+        "06f56b92-c8a4-4117-8a0e-6f2c5e82e67e",
+        "judge_me_reviews_preview_badge_W37UcM",
+        "volume_discount",
+        "quantity_selector",
+        "5a6fa0e9-f4b0-4caf-a1fa-83a7ab582a60",
+        "collapsible_text_zxtRni",
+        "collapsible_text_EwMmfx",
+        "collapsible_text_xNNf4B",
+        "description",
+        "judge_me_reviews_review_widget_KMAhYq",
+        "separator",
+        "66af2bc0-545e-43fe-b603-e60f3db6bf2f"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 65,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 4,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products"
+  ]
+}
